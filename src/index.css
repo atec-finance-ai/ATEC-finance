@@ -1,0 +1,31 @@
+:root {
+  --navy: #d60051;
+  --navy-dark: #a80040;
+  --accent: #2f7ed8;
+  --bg: #f4f6f8;
+  --danger: #d1453a;
+  --ok: #2e9e5b;
+  font-family: -apple-system, 'Apple SD Gothic Neo', 'Malgun Gothic', Pretendard, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  height: 100%;
+  margin: 0;
+  background: var(--bg);
+  color: #1a1a1a;
+  font-size: 18px;
+  line-height: 1.6;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+}
+
+input {
+  font-family: inherit;
+}

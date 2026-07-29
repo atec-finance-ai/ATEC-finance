@@ -1,5 +1,6 @@
 import {
   collection,
+  deleteDoc,
   doc,
   getDoc,
   getDocs,
@@ -90,6 +91,10 @@ export async function updateItemAssignee(periodId, itemId, assignee) {
 
 export async function updateItemFields(periodId, itemId, fields) {
   await updateDoc(doc(itemsCollection(periodId), itemId), fields)
+}
+
+export async function deleteItem(periodId, itemId) {
+  await deleteDoc(doc(itemsCollection(periodId), itemId))
 }
 
 export async function addCustomItem(periodId, { category, item, content }) {

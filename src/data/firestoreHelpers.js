@@ -88,6 +88,10 @@ export async function updateItemAssignee(periodId, itemId, assignee) {
   await updateDoc(doc(itemsCollection(periodId), itemId), { assignee })
 }
 
+export async function updateItemFields(periodId, itemId, fields) {
+  await updateDoc(doc(itemsCollection(periodId), itemId), fields)
+}
+
 export async function addCustomItem(periodId, { category, item, content }) {
   const snap = await getDocs(itemsCollection(periodId))
   const nextOrder = snap.size

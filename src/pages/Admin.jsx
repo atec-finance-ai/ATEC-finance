@@ -11,6 +11,7 @@ import {
   updateItemStatus,
   updateItemNote,
   updateItemAssignee,
+  updateItemFields,
   updatePeriodMeta,
   addCustomItem,
 } from '../data/firestoreHelpers'
@@ -146,6 +147,7 @@ export default function Admin() {
             onStatusChange={(item, status) => updateItemStatus(periodId, item.id, status)}
             onNoteChange={(item, note) => updateItemNote(periodId, item.id, note)}
             onAssigneeChange={(item, assignee) => updateItemAssignee(periodId, item.id, assignee)}
+            onItemTextChange={(item, fields) => updateItemFields(periodId, item.id, fields)}
           />
         </>
       )}

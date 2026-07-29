@@ -257,6 +257,27 @@
   margin-top: 4px;
 }
 
+.item-title-input {
+  width: 100%;
+  font-weight: 700;
+  font-size: 16px;
+  padding: 6px 8px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  background: #fafafa;
+}
+
+.item-content-input {
+  width: 100%;
+  font-size: 15px;
+  color: #555;
+  margin-top: 6px;
+  padding: 6px 8px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  background: #fafafa;
+}
+
 .item-edit-row {
   display: flex;
   gap: 8px;
@@ -474,11 +495,17 @@
 .print-item-table th {
   background: #f0f0f0;
   text-align: center;
+  white-space: nowrap;
+}
+
+.print-item-table td:first-child {
+  white-space: nowrap;
 }
 
 .print-status {
   text-align: center;
   font-weight: 700;
+  white-space: nowrap;
 }
 
 .print-sign-row {

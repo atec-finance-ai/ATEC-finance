@@ -4,8 +4,15 @@ import { STAFF_NAMES } from '../data/staff'
 
 export const STATUS_OPTIONS = ['O', '△', 'X']
 
-// editable=false 이면 읽기 전용 (체크리스트 화면), true면 상태/담당자/비고 수정 가능 (관리 화면)
-export default function ChecklistTable({ items, editable = false, onStatusChange, onNoteChange, onAssigneeChange }) {
+// editable=false 이면 읽기 전용 (체크리스트 화면), true면 항목/상태/담당자/비고 수정 가능 (관리 화면)
+export default function ChecklistTable({
+  items,
+  editable = false,
+  onStatusChange,
+  onNoteChange,
+  onAssigneeChange,
+  onItemTextChange,
+}) {
   const [tab, setTab] = useState(CATEGORIES[0])
   const filtered = items.filter((i) => i.category === tab)
 
@@ -42,8 +49,25 @@ export default function ChecklistTable({ items, editable = false, onStatusChange
             <span className={`status-badge status-${i.status || 'none'}`}>{i.status || '-'}</span>
           )}
           <div className="item-body">
-            <div className="item-title">{i.item}</div>
-            <div className="item-content">{i.content}</div>
+            {editable && onItemTextChange ? (
+              <>
+                <input
+                  className="item-title-input"
+                  defaultValue={i.item}
+                  onBlur={(e) => onItemTextChange && onItemTextChange(i, { item: e.target.value })}
+                />
+                <input
+                  className="item-content-input"
+                  defaultValue={i.content}
+                  onBlur={(e) => onItemTextChange && onItemTextChange(i, { content: e.target.value })}
+                />
+              </>
+            ) : (
+              <>
+                <div className="item-title">{i.item}</div>
+                <div className="item-content">{i.content}</div>
+              </>
+            )}
             {editable ? (
               <div className="item-edit-row">
                 <select

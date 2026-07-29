@@ -14,6 +14,7 @@ import {
   updateItemFields,
   updatePeriodMeta,
   addCustomItem,
+  deleteItem,
 } from '../data/firestoreHelpers'
 import { CATEGORIES } from '../data/checklistTemplate'
 
@@ -54,6 +55,11 @@ export default function Admin() {
     if (!newItem.item.trim()) return
     await addCustomItem(periodId, newItem)
     setNewItem({ category: CATEGORIES[0], item: '', content: '' })
+  }
+
+  async function handleDeleteItem(item) {
+    if (!window.confirm(`"${item.item}" 항목을 삭제할까요? 되돌릴 수 없습니다.`)) return
+    await deleteItem(periodId, item.id)
   }
 
   return (
@@ -148,6 +154,7 @@ export default function Admin() {
             onNoteChange={(item, note) => updateItemNote(periodId, item.id, note)}
             onAssigneeChange={(item, assignee) => updateItemAssignee(periodId, item.id, assignee)}
             onItemTextChange={(item, fields) => updateItemFields(periodId, item.id, fields)}
+            onDeleteItem={handleDeleteItem}
           />
         </>
       )}

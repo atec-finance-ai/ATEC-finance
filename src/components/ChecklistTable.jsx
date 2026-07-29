@@ -12,6 +12,7 @@ export default function ChecklistTable({
   onNoteChange,
   onAssigneeChange,
   onItemTextChange,
+  onDeleteItem,
 }) {
   const [tab, setTab] = useState(CATEGORIES[0])
   const filtered = items.filter((i) => i.category === tab)
@@ -95,6 +96,16 @@ export default function ChecklistTable({
               </div>
             )}
           </div>
+          {onDeleteItem && (
+            <button
+              type="button"
+              className="item-delete-btn"
+              title="항목 삭제"
+              onClick={() => onDeleteItem(i)}
+            >
+              ×
+            </button>
+          )}
         </div>
       ))}
     </>

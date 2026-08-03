@@ -14,10 +14,12 @@ import {
 import { db } from '../firebase'
 import { CHECKLIST_TEMPLATE } from './checklistTemplate'
 
-// period id 형식: "2026-06" (YYYY-MM)
+// 결산은 다음 달 초에 전월 것을 진행하므로, 기본 조회 기간은 "오늘이 속한 달의 전월"입니다.
+// 예: 오늘이 2026-08-04 이면 "2026-07"을 반환 (YYYY-MM)
 export function currentPeriodId(date = new Date()) {
-  const y = date.getFullYear()
-  const m = String(date.getMonth() + 1).padStart(2, '0')
+  const prevMonth = new Date(date.getFullYear(), date.getMonth() - 1, 1)
+  const y = prevMonth.getFullYear()
+  const m = String(prevMonth.getMonth() + 1).padStart(2, '0')
   return `${y}-${m}`
 }
 

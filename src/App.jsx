@@ -5,6 +5,8 @@ import Checklist from './pages/Checklist.jsx'
 import Admin from './pages/Admin.jsx'
 import Print from './pages/Print.jsx'
 import History from './pages/History.jsx'
+import Inventory from './pages/Inventory.jsx'
+import InventoryLedger from './pages/InventoryLedger.jsx'
 import './App.css'
 
 export default function App() {
@@ -20,6 +22,8 @@ export default function App() {
           <Route path="/print" element={<Print />} />
           <Route path="/print/:periodId" element={<Print />} />
           <Route path="/history" element={<History />} />
+          <Route path="/inventory" element={<Inventory />} />
+          <Route path="/inventory/:itemId" element={<InventoryLedger />} />
         </Routes>
       </main>
     </div>

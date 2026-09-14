@@ -17,6 +17,9 @@ export default function Nav() {
         <NavLink to="/history" className={({ isActive }) => `nav-link${isActive ? ' active' : ''}`}>
           지난 기록
         </NavLink>
+        <NavLink to="/inventory" className={({ isActive }) => `nav-link${isActive ? ' active' : ''}`}>
+          재고 수불부
+        </NavLink>
         <NavLink to="/admin" className={({ isActive }) => `nav-link${isActive ? ' active' : ''}`}>
           관리
         </NavLink>

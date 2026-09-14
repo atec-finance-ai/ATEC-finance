@@ -16,6 +16,19 @@ service cloud.firestore {
       }
     }
 
+    // 유럽법인 재고 수불부
+    // - 읽기: 누구나 가능 (품목 목록/수불부 조회는 로그인 없이 가능)
+    // - 쓰기: 로그인(관리자)한 사용자만 가능 (품목 등록, 입출고 등록)
+    match /stockItems/{itemId} {
+      allow read: if true;
+      allow write: if request.auth != null;
+
+      match /movements/{movementId} {
+        allow read: if true;
+        allow write: if request.auth != null;
+      }
+    }
+
     // 그 외 문서는 모두 차단
     match /{document=**} {
       allow read, write: if false;

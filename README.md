@@ -25,7 +25,7 @@ npm run dev
 
 ```
 periods/{YYYY-MM}                 - 담당자, 검토자, 검토요청/완료일자 등 메타
-periods/{YYYY-MM}/items/{itemId}  - category(자금/재무/인사), item, content, checked, note
+periods/{YYYY-MM}/items/{itemId}  - category(자금/재무/인사), item, content, status(O/△/X), assignee, note
 ```
 
 관리 화면에서 로그인 후 "이번 달 체크리스트 생성" 버튼을 누르면 `src/data/checklistTemplate.js`에 있는
@@ -38,26 +38,9 @@ periods/{YYYY-MM}/items/{itemId}  - category(자금/재무/인사), item, conten
 
 배포된 주소(https)로 접속했을 때만 정상 동작합니다.
 
-## 5. GitHub push
+## 5. GitHub / 배포
 
-이 환경에서는 네트워크 정책상 GitHub push를 대신 실행할 수 없어, 아래 명령을 직접 실행해주세요.
-(이미 만드신 저장소 `atec-finance-ai/ATEC-finance`는 README.md만 있는 빈 저장소입니다.)
-
-```bash
-cd atec-finance
-git init
-git add .
-git commit -m "Initial commit: 월 결산 체크리스트 기본 화면"
-git branch -M main
-git remote add origin https://github.com/atec-finance-ai/ATEC-finance.git
-git pull origin main --allow-unrelated-histories   # 기존 README.md 병합
-git push -u origin main
-```
-
-push 시 아이디/비밀번호를 물으면 비밀번호 자리에 발급받은 Personal Access Token을 입력하세요.
-push가 끝나면 보안을 위해 GitHub 토큰 설정 페이지(https://github.com/settings/tokens)에서 토큰을 삭제(Delete)해주세요.
-
-## 6. 배포
-
-아직 배포 단계는 진행하지 않았습니다. 기본 화면 확인 후 GitHub Pages / Firebase Hosting 중
-원하는 방식으로 다음 단계에서 진행하면 됩니다.
+- 저장소: https://github.com/atec-finance-ai/ATEC-finance
+- 배포 주소: https://atec-finance.vercel.app (Vercel 팀 `ATEC Finance`)
+- `main` 브랜치에 push하면 Vercel이 자동으로 빌드해서 배포합니다.
+- 기본 조회 기간은 오늘이 속한 달의 **전월**입니다. (결산은 다음 달 초에 전월 것을 진행하기 때문)
